@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <h1 style="text-align: center">Ejercicio 7</h1>
+    <script>
+
+        function calcular(){
+            var esta=document.datos.Alt.value;
+            var sexo=document.datos.Sex.value;
+            var anios=parseInt(document.datos.edad.value)
+            var peso=parseInt(document.datos.kg.value)
+            var imc=0;
+            var estado='';
+            esta=esta/100;
+            imc=(peso/(esta*esta))
+            
+            if (imc < 18.5) {
+              estado = "Bajo peso";
+            } else if (imc >= 18.5 && imc < 25) {
+              estado = "Normal";
+            } else if (imc >= 25 && imc < 30) {
+              estado = "Sobrepeso";
+            } else {
+              estado = "Obesidad";
+            }
+
+            document.getElementById("imc").innerHTML=imc.toFixed(2);
+            document.getElementById("estado").innerHTML=estado;
+            
+        }
+    </script>
+    </head>
+
+    <body>
+        <form name="datos">
+            Introduce la altura en cm:
+            <select id="Alt">
+                <script type="text/javascript">
+                    for(let i=10; i<200;i++){
+                        document.write("<option>"+ i + "</option>")
+                    }
+                </script>
+            </select>
+            <br><br>
+            Sexo:
+            <select id="Sex">
+                <option text="Mujer">Mujer</option>
+                <option text="Hombre">Hombre</option>
+            </select>
+            <br><br>
+            Edad: <input type="text" size="20" name="edad">
+            <br><br>
+            Peso(kg): <input type="text" size="20" name="kg"><br><br>
+            <input type="button" onclick="calcular()" value="Calcular"><br><br>
+            <p>El IMC es: <span id="imc"></span></p><br>
+            <p>Su estado es: <span id="estado"></span></p><br>
+
+        </form>
+
+    </body>
+</html>
